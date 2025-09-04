@@ -1,5 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router";
+import { auth } from "../../Firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 const Register = () => {
     const handleRegisterForm = e => {
         e.preventDefault();
@@ -7,8 +9,14 @@ const Register = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        console.log(name, email, password);
-
+        console.log(name, email, password); 
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((result) => {
+                console.log(result);
+            })
+            .catch((error)=>{
+                console.log(error);
+            })
     }
     return (
         <div className="my-10 mx-auto">
