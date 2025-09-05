@@ -8,7 +8,8 @@ import Home from './Components/Home/Home.jsx'
 import Register from './Components/Register/Register.jsx'
 import Login from './Components/Login/Login.jsx'
 import Signup from './Components/Signup/Signup.jsx'
- export const AuthContext = createContext(null);
+import AuthProvider from './AuthContext/AuthProvider.jsx'
+export const AuthContext = createContext(null);
 const userInfo = {
   email: 'atikur@rahaman.com'
 };
@@ -27,9 +28,12 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <AuthContext value={userInfo}>
+    {/* <AuthContext value={userInfo}>
       <RouterProvider router={router}></RouterProvider>
 
-    </AuthContext>
+    </AuthContext> */}
+    <AuthProvider>
+      <RouterProvider router={router}></RouterProvider>
+    </AuthProvider>
   </StrictMode>,
 )

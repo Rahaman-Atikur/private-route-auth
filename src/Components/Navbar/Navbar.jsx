@@ -3,7 +3,7 @@ import { NavLink } from "react-router";
 import { AuthContext } from "../../main";
 const Navbar = () => {
   const userInfo = use(AuthContext);
-  console.log(userInfo);
+  console.log('userInformation in the Navbar:',userInfo);
   return (
     <div>
       <div className="navbar bg-base-100 shadow-sm">
