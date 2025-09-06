@@ -1,20 +1,30 @@
-import React from "react";
+import React, { use } from "react";
 import { NavLink } from "react-router";
 import { auth } from "../../Firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { AuthContext } from "../../main";
 const Register = () => {
+    const { createUser } = use(AuthContext);
+    console.log(userInfo);
     const handleRegisterForm = e => {
         e.preventDefault();
         const name = e.target.name.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        console.log(name, email, password); 
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((result) => {
+        console.log(name, email, password);
+        // createUserWithEmailAndPassword(auth, email, password)
+        //     .then((result) => {
+        //         console.log(result);
+        //     })
+        //     .catch((error)=>{
+        //         console.log(error);
+        //     })
+        createUser(email, password)
+            .then(result => {
                 console.log(result);
             })
-            .catch((error)=>{
+            .catch(error => {
                 console.log(error);
             })
     }

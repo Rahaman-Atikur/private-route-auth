@@ -1,8 +1,13 @@
 import React from 'react';
 import { AuthContext } from '../main';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../Firebase';
 
 const AuthProvider = ({ children }) => {
-    const userInfo = { email: 'atikur.uk.rahaman@gmail.com' }
+    const createUser = (email, password) => {
+        return createUserWithEmailAndPassword(auth, email, password);
+    }
+    const userInfo = { createUser }
     return (
         <div>
             <AuthContext value={userInfo}></AuthContext>
@@ -10,5 +15,4 @@ const AuthProvider = ({ children }) => {
         </div>
     );
 };
-
 export default AuthProvider;
