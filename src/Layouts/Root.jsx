@@ -1,7 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router';
 import Navbar from '../Components/Navbar/Navbar';
-
 const Root = () => {
     return (
         <div>
@@ -10,5 +9,4 @@ const Root = () => {
         </div>
     );
 };
-
 export default Root;
