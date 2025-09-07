@@ -1,15 +1,25 @@
-import React from "react";
+import React, { use } from "react";
 import { NavLink } from "react-router";
+import { AuthContext } from "../../main";
 const Login = () => {
+  const userInfo = use(AuthContext);
+  console.log(userInfo);
+  const handleLogin = e => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    console.log(email, password);
+  }
   return (
     <div className="my-10 mx-auto">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
         <div className="card-body">
-          <form className="fieldset">
+          <form onSubmit={handleLogin} className="fieldset">
             <label className="label">Email</label>
-            <input type="email" className="input" placeholder="Email" />
+            <input name="email" type="email" className="input" placeholder="Email" />
             <label className="label">Password</label>
             <input
+              name="password"
               type="password"
               className="input"
               placeholder="Password"
