@@ -1,9 +1,13 @@
-import React, { use } from "react";
+import React, {  use, useContext } from "react";
 import { NavLink } from "react-router";
 import { AuthContext } from "../../main";
 const Login = () => {
+
+  // const userInfo = useContext(AuthContext);
   const userInfo = use(AuthContext);
   console.log(userInfo);
+
+
   const handleLogin = e => {
     e.preventDefault();
     const email = e.target.email.value;
